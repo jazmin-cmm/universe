@@ -1,0 +1,188 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  background: url('fondo1.png') no-repeat center center fixed;
+}
+
+
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+}
+
+.container-logo img {
+  width: 80px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 25px #00ffcc;
+}
+
+
+
+#btn-dark-mode {
+  background: linear-gradient(90deg, #00BFFF, #8eff00);
+  color: #000;
+  border: none;
+  border-radius: 15px;
+  padding: 12px 28px;
+  font-weight: bold;
+  box-shadow: 0 0 25px rgba(255, 255, 0, 0.7);
+}
+
+#btn-dark-mode:hover {
+  background: linear-gradient(90deg, #f7ff00, #00ff88);
+  box-shadow: 30px #00ffcc;
+}
+
+
+
+.main-container {
+  text-align: center;
+  padding: 80px 16px 48px;
+  backdrop-filter: blur(6px);
+}
+
+
+.main-container h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 64px;
+  color: #f7ff00;
+  text-shadow: 0 0 20px #00ffff, 0 0 35px #8eff00;
+  letter-spacing: 2px;
+
+}
+
+.main-container p,
+.main-container span {
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+
+
+.search {
+  display: flex;
+  justify-content: center;
+  margin: 48px 0;
+  gap: 10px;
+}
+
+.search input {
+  padding: 12px 20px;
+  border-radius: 15px;
+  border: 2px solid #00ffcc;
+  background: rgba(160, 245, 137, 0.103);
+  color: #000000;
+  width: 260px;
+}
+
+.search input:focus {
+  box-shadow:  25px #00ffcc;
+}
+
+.search button {
+  padding: 12px 25px;
+  background: linear-gradient(90deg, #00BFFF, #8eff00);
+  border: none;
+  color: #000;
+  font-weight: bold;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #00ffff;
+}
+
+.search button:hover {
+  background: linear-gradient(90deg, #8eff00, #00BFFF);
+}
+
+
+.personaje {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 25px;
+  padding: 2px;
+}
+
+.card {
+  background: rgba(0, 0, 0, 0.218);
+  border-radius: 20px;
+  padding: 15px;
+  text-align: center;
+  border: 2px solid transparent;
+  box-shadow: 0 0 25px rgba(0,255,255,0.3);
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+  border-color: #8eff00;
+  box-shadow: 0 0 40px #00ffcc;
+}
+
+.card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 10px;
+  border-bottom: 3px solid #f7ff00;
+}
+
+.card h3 {
+  color: #8eff00;
+  font-family: 'Bebas Neue', sans-serif;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+.card p {
+  color: #00ffff;
+}
+
+
+.more-btn {
+  display: flex;
+  justify-content: center;
+  margin: 2px;
+}
+
+.more-btn button {
+  padding: 14px 35px;
+  background: linear-gradient(90deg, #00BFFF, #8eff00);
+  border: none;
+  border-radius: 15px;
+  color: #000;
+  font-weight: bold;
+  box-shadow: 0 0 25px #00ffff;
+ 
+}
+
+.more-btn button:hover {
+  background: linear-gradient(90deg, #8eff00, #00BFFF);
+  box-shadow:  40px #f7ff00;
+}
+
+
+.dark-mode {
+  background: linear-gradient(135deg, #0a0a0a, #001f3f, #000);
+  color: #b8b8b8;
+}
+
+.dark-mode header {
+  background: linear-gradient(135deg, #001f3f, #001f3f, #001f3f);
+  border-color: #00ffff;
+}
+
+.dark-mode .card {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #00ffcc;
+}
+
+.dark-mode h1 {
+  color: #00ffff;
+  text-shadow:  20px #00ffff,  40px #8eff00;
+}

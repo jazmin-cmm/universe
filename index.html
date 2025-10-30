@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explorador de SuperHéroes</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="shadow">
+    <div class="container-logo">
+      <img src="logo.png" alt="Logo SuperHéroes" />
+    </div>
+    <div>
+      <button id="btn-dark-mode">Modo Oscuro</button>
+    </div>
+  </header>
+
+  <section class="main-container">
+    <p>Base de Datos de Héroes y Villanos</p>
+    <h1>UNIVERSE CENTRAL</h1>
+    <span>Todos los universos reunidos</span>
+  </section>
+
+  <div class="search">
+    <input class="shadow" type="text" id="searchInput" placeholder="Buscar personaje..." />
+    <button id="btnBuscar">Buscar</button>
+  </div>
+
+  <section id="personajes" class="personaje"></section>
+
+  <div class="more-btn">
+    <button id="btn-load-more">Cargar más personajes</button>
+  </div>
+
+  <script>
+    let personajes = [];
+    let index = 0;
+    const CARGA_POR_LOTE = 20;
+
+    async function obtener_personajes() {
+      if (personajes.length === 0) {
+        const url = "https://akabab.github.io/superhero-api/api/all.json";
+        try {
+          const response = await fetch(url);
+          personajes = await response.json();
+        } catch (err) {
+          console.error("Error al obtener personajes:", err);
+          return;
+        }
+      }
+      mostrar_personajes();
+    }
+
+    function mostrar_personajes() {
+      const contenedor = document.getElementById("personajes");
+      const fin = Math.min(index + CARGA_POR_LOTE, personajes.length);
+      for (let i = index; i < fin; i++) {
+        const p = personajes[i];
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.innerHTML = `
+          <img src="${p.images.lg}" alt="${p.name}" />
+          <h3>${p.name}</h3>
+          <p>${p.biography.fullName || ""}</p>
+        `;
+        contenedor.appendChild(card);
+      }
+      index = fin;
+      if (index >= personajes.length) {
+        document.getElementById("btn-load-more").disabled = true;
+        document.getElementById("btn-load-more").innerText = "No hay más personajes";
+      }
+    }
+
+    document.getElementById("btn-load-more").addEventListener("click", obtener_personajes);
+
+    document.getElementById("btnBuscar").addEventListener("click", () => {
+      const filtro = document.getElementById("searchInput").value.toLowerCase();
+      const filtrados = personajes.filter(p => p.name.toLowerCase().includes(filtro));
+      const contenedor = document.getElementById("personajes");
+      contenedor.innerHTML = "";
+      filtrados.forEach(p => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.innerHTML = `
+          <img src="${p.images.lg}" alt="${p.name}" />
+          <h3>${p.name}</h3>
+          <p>${p.biography.fullName || ""}</p>
+        `;
+        contenedor.appendChild(card);
+      });
+    });
+
+    document.getElementById("btn-dark-mode").addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      const btn = document.getElementById("btn-dark-mode");
+      btn.innerText = document.body.classList.contains("dark-mode") ? "Modo Claro" : "Modo Oscuro";
+    });
+
+    
+    obtener_personajes();
+  </script>
+</body>
+</html>
