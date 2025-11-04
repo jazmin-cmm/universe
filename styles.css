@@ -4,7 +4,7 @@ body {
   color: #ffffff;
   background: url('fondo1.png') no-repeat center center fixed;
   background-size: cover;
-  background-attachment:
+  background-attachment: fixed;
  }
 
 
@@ -187,4 +187,5 @@ header {
   color: #00ffff;
   text-shadow:  20px #00ffff,  40px #8eff00;
 }
+
 
